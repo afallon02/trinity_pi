@@ -1,2 +1,2 @@
-cd /usr/local.d/;
+cd /etc/local.d/;
 cp ~/trinity_pi/* .;
