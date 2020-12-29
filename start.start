@@ -1,0 +1,11 @@
+#!/bin/sh
+wpa_supplicant -B -i wlan1 -c /etc/wpa_supplicant/wpa_supplicant.conf
+/etc/init.d/networking restart
+
+# Setup Go
+mkdir -p ~/go;
+export GOPATH=/root/go
+export PATH=${GOPATH}/bin:/usr/local/go/bin:$PATH
+export GOBIN=$GOROOT/bin
+mkdir -p ${GOPATH}/src ${GOPATH}/bin
+export GO111MODULE=on
