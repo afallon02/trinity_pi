@@ -8,14 +8,14 @@ do
 	esac
 done
 
-if [ -z "$interface" ] || [ -z "$WIFI_ADAPTER" ]
+if [ -z "$WIFI_ADAPTER" ] || [ -z "$WIFI_ADAPTER" ]
 then
 	exit "No interface specified!"
 else
-	echo "Enabling managed mode on interface: $interface...";
-	ifconfig $interface down;
-	iwconfig $interface mode monitor;
-	ifconfig $interface up;
+	echo "Enabling managed mode on interface: $WIFI_ADAPTER...";
+	ifconfig $WIFI_ADAPTER down;
+	iwconfig $WIFI_ADAPTER mode monitor;
+	ifconfig $WIFI_ADAPTER up;
 	echo "Monitor mode enabled";
 fi
 
