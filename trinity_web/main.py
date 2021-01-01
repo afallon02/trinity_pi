@@ -5,7 +5,7 @@ import json
 
 @MicroWebSrv.route('/wifi_networks')
 def _httpHandlerTestGet(httpClient, httpResponse) :
-    cmd = ['../scripts/scan_wifi_networks.sh']
+    cmd = ['/etc/local.d/scan_wifi_networks.sh']
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     response = []
     for line in process.stdout:

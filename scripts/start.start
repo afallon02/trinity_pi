@@ -11,3 +11,5 @@ then
 else
 	/usr/local.d/monitor_mode_enable.sh -i "$WIFI_ADAPTER";
 fi
+
+nohup python3 /etc/local.d/trinity_web/main.py
