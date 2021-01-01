@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Auto enable wifi on the on board wifi chip
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+/etc/init.d/networking restart;
+
+# Auto enable monitor mode so you don't need to do it every reboot.
+if [ -z "$WIFI_ADAPTER" ]
+then
+	exit "You need to specify a WiFi adapter in /etc/profile. \n\nAdd;\n\n 'export WIFI_ADAPTER=<ADAPTER>'\n"
+else
+	/usr/local.d/monitor_mode_enable.sh -i "$WIFI_ADAPTER";
+fi

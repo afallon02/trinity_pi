@@ -8,7 +8,7 @@ do
 	esac
 done
 
-if [ -z "$interface" ]
+if [ -z "$interface" ] || [ -z "$WIFI_ADAPTER" ]
 then
 	exit "No interface specified!"
 else
