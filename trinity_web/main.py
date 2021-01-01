@@ -1,9 +1,18 @@
+import os
+import subprocess
 from microWebSrv import MicroWebSrv
+import json
 
-@MicroWebSrv.route('/test')
+@MicroWebSrv.route('/wifi_networks')
 def _httpHandlerTestGet(httpClient, httpResponse) :
-    
-
+    cmd = ['../scripts/scan_wifi_networks.sh']
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    response = []
+    for line in process.stdout:
+        print(line)
+        response.append(str(line))
+    process.wait()
+    httpResponse.WriteResponseJSONOk(obj={'response': response})
 # ----------------------------------------------------------------------------
 
 def _acceptWebSocketCallback(webSocket, httpClient) :
