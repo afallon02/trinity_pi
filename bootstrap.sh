@@ -1,3 +1,4 @@
+mkdir -p /etc/local.d;
 cp -r scripts/* /etc/local.d/;
 cp -r trinity_web /etc/local.d/;
 
