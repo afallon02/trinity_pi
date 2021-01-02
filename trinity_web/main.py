@@ -3,16 +3,61 @@ import subprocess
 from microWebSrv import MicroWebSrv
 import json
 
-@MicroWebSrv.route('/wifi_networks')
-def _httpHandlerTestGet(httpClient, httpResponse) :
-    cmd = ['/etc/local.d/scan_wifi_networks.sh']
+
+@MicroWebSrv.route('/monitor_mode_disable')
+def _httpHandlerMonitorDisable(httpClient, httpResponse) :
+    cmd = ['/etc/local.d/monitor_mode_disable.sh']
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     response = []
+
     for line in process.stdout:
         print(line)
         response.append(str(line))
+
     process.wait()
+
     httpResponse.WriteResponseJSONOk(obj={'response': response})
+
+@MicroWebSrv.route('/monitor_mode_enable')
+def _httpHandlerMonitorEnable(httpClient, httpResponse) :
+    cmd = ['/etc/local.d/monitor_mode_enable.sh']
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    response = []
+
+    for line in process.stdout:
+        print(line)
+        response.append(str(line))
+
+    process.wait()
+
+    httpResponse.WriteResponseJSONOk(obj={'response': response})
+
+@MicroWebSrv.route('/show_network_interfaces')
+def _httpHandleGetShowNetworkInterfaces(httpClient, httpResponse) :
+    cmd = ['/etc/local.d/wifi_interfaces.sh']
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    response = []
+
+    for line in process.stdout:
+        print(line)
+        response.append(str(line))
+
+    process.wait()
+
+    httpResponse.WriteResponseJSONOk(obj={'response': response})
+
+@MicroWebSrv.route('/wifi_networks')
+def _httpHandlerWifiNetworks(httpClient, httpResponse) :
+    cmd = ['/etc/local.d/scan_wifi_networks.sh']
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    response = []
+
+    for line in process.stdout:
+        print(line)
+        response.append(str(line))
+
+    process.wait()
+    httpResponse.WriteResponseJSONOk(obj={'response': response, 'errors': errors})
 # ----------------------------------------------------------------------------
 
 def _acceptWebSocketCallback(webSocket, httpClient) :

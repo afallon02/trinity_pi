@@ -2,18 +2,23 @@
 
 <html lang=fr>
 
-	<head>
-		<meta charset="UTF-8" />
-		<title>Trinity</title>
-		<link rel="stylesheet" href="style.css" />
-		<script src="main.js"></script>
-	</head>
+  <head>
+	<meta charset="UTF-8" />
+	<title>Trinity</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="main.js"></script>
+  </head>
 
-	<body>
-		<h1>Trinity</h1>
-		<div>
-			<input type="button" id="wifi-networks-button" onclick="show_networks()" value="Show WiFi Networks"></input>
-			<div class="main" id="main"></div>
-		</div>
-	</body>
+  <body>
+	<h1>Trinity</h1>
+	<div>
+	  <div>
+		<input type="button" id="wifi-networks-button" onclick="show_networks()" value="Show WiFi Networks"></input>
+		<input type="button" id="monitor-enable-button" onclick="monitor_enable()" value="Monitor Mode On"></input>
+		<input type="button" id="monitor-disable-button" onclick="monitor_disable()" value="Monitor Mode Disable"></input>
+		<input type="button" id="show-network-interfaces" onclick="show_network_interfaces()" value="Show Network Interfaces"></input>
+	  </div>
+	  <div class="main" id="main"></div>
+	</div>
+  </body>
 </html>
